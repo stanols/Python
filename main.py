@@ -1,63 +1,12 @@
 import sys;
 import math;
-import hashlib;
 import getpass;
 import json;
 import random;
+import data_types;
+import data_hash;
 
-#returns hash value for input string
-def getHash(text):
-    return hashlib.sha256(text.encode()).hexdigest();
-
-def printDataTypes():
-    #str
-    name = 'Natalia';
-    #int
-    age = 18;
-    #float
-    height = 160;
-    #complex
-    iq = 100j
-    #list
-    pets = ['dog', 'cat'];
-    #tuple
-    fruits = ('banana', 'apple');
-    #range
-    score = range(10);
-    #dict
-    attributes = { 'boobs': 90, 'back': 90 };
-    #set
-    vegetables = { 'cucumber', 'tomato' };
-    #frozenset
-    frozenVegetables = ({ 'cherry' });
-    #bool
-    isWoman = True;
-    #bytes
-    array = b'hello';
-    #bytearray
-    byteArray = bytearray(5);
-    #memoryview
-    memory = memoryview(bytes(5));
-    #None
-    n = None;
-
-    print(name);
-    print(str(age));
-    print(str(height));
-    print(str(iq))
-    print(str(pets));
-    print(str(fruits));
-    print(str(score));
-    print(str(attributes));
-    print(str(vegetables));
-    print(str(frozenVegetables));
-    print(str(isWoman));
-    print(str(array));
-    print(str(byteArray));
-    print(str(memory));
-    print(str(n));
-
-printDataTypes();
+data_types.printDataTypes();
 print(random.randrange(1, 10));
 
 login = input('Login:');
@@ -83,7 +32,7 @@ while True:
         attempts += 1;
         continue;
 
-    passwordHash = getHash(passwordConfirmation);
+    passwordHash = data_hash.getHash(passwordConfirmation);
 
     if passwordHash != hash:
         print('Unauthorized. Password is incorrect. Try again');
